@@ -4,11 +4,93 @@
   <meta charset="utf-8">
   <title> Rock Paper Scissors</title>
 </head>
+
 <body>
 
   <script>
-     console.log("Hello World!");
+    
+    let score = 0;
+    let message = game(score);
+    alert ("You have Won " + message+ " Out of 5 Games !");
 
+    function playRound(playerSelection, computerSelection) {
+      switch (playerSelection){
+        case "ROCK":
+          if (computerSelection === "ROCK") {
+            alert ("Tie");
+            return false;
+          }
+          else if (computerSelection === 'PAPER') {
+            alert ('You Lose! Paper beats Rock');
+            return false;
+          }
+          else if (computerSelection === 'SCISSORS') {
+            alert ('You Win! Rock beats Scissors');
+            return true;
+          }
+        break;
+        case "PAPER":
+          if (computerSelection === "PAPER") {
+              alert ("Tie");
+              return false;
+            }
+            else if (computerSelection === 'SCISSORS') {
+              alert ('You Lose! Scissors beats Paper');
+              return false;
+            }
+            else if (computerSelection === 'ROCK') {
+              alert ('You Win! Paper beats Rock');
+              return true;
+            }
+        break;
+
+        case "SCISSORS":
+          if (computerSelection === "SCISSORS") {
+            alert ("Tie");
+            return false;
+          }
+          else if (computerSelection === 'ROCK') {
+            alert ('You Lose! Rock beats Scissors');
+            return false; 
+          }
+          else if (computerSelection === 'PAPER') {
+            alert ('You Win! Scissors beats Paper');
+            return true;
+          }
+        break;
+        default:
+
+      }
+    }
+    function computerPlay() {
+
+    let randomNumber=Math.floor(Math.random()*3) +1;
+    let computerGuess="";
+
+    if(randomNumber === 1) {
+      return 'ROCK';
+    }
+    else if(randomNumber === 2) {
+      return 'PAPER';
+    }
+    else if(randomNumber === 3) {
+      return 'SCISSORS';
+    }
+    
+    }
+    function game(score){
+      let i=0;
+      while (i < 5) {
+        let playerSelection = prompt ("Choose what You Want - Rock Paper Scissors", "Rock").toUpperCase();//PlayerChoise;
+        console.log(playerSelection);
+        const computerSelection = computerPlay();
+        const winMessage = playRound(playerSelection, computerSelection);
+        if (winMessage === true){ score++;}
+        i++;
+      }
+      return score;
+    }
   </script>
+
 </body>
 </html>
